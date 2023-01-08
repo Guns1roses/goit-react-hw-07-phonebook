@@ -1,17 +1,22 @@
-import { add, remove } from '../redux/slice/contactSlice';
-import { useSelector, useDispatch } from 'react-redux';
+import {
+  useAddContactsMutation,
+  useGetContactsQuery,
+  useRemoveContactsMutation,
+  useUpdateContactbyIdMutation,
+} from 'redux/slice/contactSlice';
 
 export const useContacts = () => {
-  const contacts = useSelector(state => state.contacts.value);
-  const dispatch = useDispatch();
+  const { data: contacts, isLoading, isFetching } = useGetContactsQuery();
+  const [removeContact] = useRemoveContactsMutation();
+  const [addContact] = useAddContactsMutation();
+  const [updateContact] = useUpdateContactbyIdMutation();
 
-  const addContact = contact => {
-    dispatch(add(contact));
+  return {
+    contacts,
+    isLoading,
+    isFetching,
+    addContact,
+    updateContact,
+    removeContact,
   };
-
-  const removeContact = id => {
-    dispatch(remove(id));
-  };
-
-  return { contacts, addContact, removeContact };
 };

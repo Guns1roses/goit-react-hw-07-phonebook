@@ -6,6 +6,8 @@ export const Item = styled.li`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #ccc;
+  background-color: ${props =>
+    props.deleting ? 'rgb(252, 7, 3, .1)' : 'transparent'};
   :not(:last-child) {
     margin-bottom: 20px;
   }
@@ -27,18 +29,27 @@ export const IconUser = styled(RiUserFill)`
 `;
 
 export const Button = styled.button`
-  width: 36px;
-  height: 36px;
+  width: 30px;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #242323;
-  font-size: 30px;
+  font-size: 24px;
   border: none;
+  /* border-radius: 50%;
+  border: 1px solid #242323; */
   background-color: transparent;
-  transition: all 100ms linear;
+  transition: color 100ms linear;
   cursor: pointer;
   :hover {
     color: red;
+    /* border: 1px solid #fff; */
+  }
+`;
+
+export const ButtonEdit = styled(Button)`
+  :hover {
+    color: #8FBC8F;
   }
 `;

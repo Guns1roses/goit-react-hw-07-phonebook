@@ -18,6 +18,7 @@ export const Input = styled.input`
   border: 2px solid #ccc;
   border-radius: 7px;
   outline: none;
+  
   :focus {
     border-color: ##008080;
   }
